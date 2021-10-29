@@ -9,7 +9,6 @@ import static org.mockito.Mockito.verify;
 
 import org.junit.jupiter.api.Test;
 
-import io.turntabl.strategy.payment_strategies.MTN;
 import io.turntabl.strategy.payment_strategies.Vodafone;
 
 public class WestHillsMallTest {
@@ -17,8 +16,7 @@ public class WestHillsMallTest {
     @Test
     void testThatInstanceCanBeCreated() {
         // given
-        MTN mtn = mock(MTN.class);
-        WestHillsMall mall = new WestHillsMall(mtn);
+        WestHillsMall mall = new WestHillsMall();
         WestHillsMall spyMall = spy(mall);
         // when
         doReturn("12345").when(spyMall).getID();
@@ -30,8 +28,9 @@ public class WestHillsMallTest {
     void testThatPaymentService_GetsCalled1Time() {
         // given
         Vodafone vodafone = mock(Vodafone.class);
-        WestHillsMall westhills = new WestHillsMall(vodafone);
+        WestHillsMall westhills = new WestHillsMall();
         // when
+        westhills.setPaymentService(vodafone); 
         westhills.pay();
         // then
         verify(vodafone, times(1)).pay();
