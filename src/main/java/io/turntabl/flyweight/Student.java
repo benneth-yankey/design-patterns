@@ -1,12 +1,20 @@
 package io.turntabl.flyweight;
 
 public class Student implements Person {
+   // intrinsic state: immutable and shared
+   private final String institution = "JustLearn Academy";
+
+   // extrinsic: mutable and varies
    private int id;
    private String name;
 
    public Student(int id, String name) {
       this.id = id;
       this.name = name;
+   }
+
+   public String getInstitution() {
+      return institution;
    }
 
    public int getId() {
@@ -28,6 +36,6 @@ public class Student implements Person {
    @Override
    public void printInfo() {
       System.out.println("---------STUDENT: " + id + " -----------");
-      System.out.println("ID: " + id + "\nName: " + name);
+      System.out.println("ID: " + id + "\nName: " + name + "\nSchool: " + institution);
    }
 }

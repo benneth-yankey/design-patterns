@@ -10,10 +10,10 @@ public class PersonFactory {
         Person student;
 
         if (persons.containsKey(person)) {
-            System.out.println("reusing existing student object");
+//            System.out.println("reusing existing student object");
             student = persons.get(person);
         } else {
-            System.out.println("creating student object");
+//            System.out.println("creating student object");
             student = new Student(id, name);
             persons.put(person, student);
         }
